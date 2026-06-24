@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>COMP2132 Hangman | Save the Buddy</title>
+  <link rel="icon" href="assets/images/buddy-normal.svg">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="stars"></div>
+  <main class="game-shell">
+    <header class="hero-card fade-in">
+      <p class="course-title">COMP2132</p>
+      <h1>Hangman</h1>
+      <p class="tagline">Guess the word. Save the Buddy!</p>
+    </header>
+
+    <section class="game-layout">
+      <aside class="stats-panel panel">
+        <h2>Stats</h2>
+        <div class="stat"><span>🏆</span><strong id="wins">0</strong><small>Wins</small></div>
+        <div class="stat"><span>💜</span><strong id="losses">0</strong><small>Losses</small></div>
+        <div class="stat"><span>⚡</span><strong id="streak">0</strong><small>Streak</small></div>
+        <div class="stat"><span>🔥</span><strong id="bestStreak">0</strong><small>Best</small></div>
+      </aside>
+
+      <section class="word-panel panel">
+        <div class="top-row">
+          <span id="categoryBadge" class="badge">Loading...</span>
+          <span id="mistakes" class="mistakes">Mistakes: 0 / 7</span>
+        </div>
+        <div id="wordDisplay" class="word-display">Loading</div>
+        <p class="hint-label">Hint</p>
+        <p id="hintText" class="hint-text">Getting a mystery word ready...</p>
+        <p id="message" class="message">Pick a letter to start the rescue mission!</p>
+        <div class="power-row">
+          <button id="hintButton" class="secondary-button">💡 Hint <span id="hintsLeft">3</span></button>
+          <button id="shieldButton" class="secondary-button">🛡 Shield Ready</button>
+        </div>
+      </section>
+
+      <section class="buddy-panel panel">
+        <div class="moon"></div>
+        <img id="buddyImage" src="assets/images/buddy-normal.svg" alt="Buddy character" class="buddy-image">
+        <div class="danger-meter">
+          <span>Rescue Meter</span>
+          <div class="meter-track"><div id="dangerFill" class="meter-fill"></div></div>
+        </div>
+      </section>
+    </section>
+
+    <section class="keyboard-panel panel">
+      <div id="keyboard" class="keyboard" aria-label="Letter choices"></div>
+    </section>
+
+    <footer class="actions">
+      <button id="newGameButton" class="main-button">↻ New Game</button>
+      <button id="soundButton" class="main-button">🔊 Sound On</button>
+      <button id="resetStatsButton" class="main-button ghost">Reset Stats</button>
+    </footer>
+
+    <section id="achievementToast" class="achievement-toast" aria-live="polite"></section>
+    <canvas id="confettiCanvas"></canvas>
+  </main>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

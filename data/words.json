@@ -1,0 +1,14 @@
+[
+  { "word": "CANADA", "hint": "A country with maple leaves and hockey", "category": "Countries" },
+  { "word": "JAVASCRIPT", "hint": "The language making this game interactive", "category": "Technology" },
+  { "word": "CARNIVAL", "hint": "A place with rides, lights, and games", "category": "Places" },
+  { "word": "PUMPKIN", "hint": "A round orange fall decoration", "category": "Halloween" },
+  { "word": "VAMPIRE", "hint": "A classic spooky character with a cape", "category": "Halloween" },
+  { "word": "KEYBOARD", "hint": "You use it to type letters", "category": "Technology" },
+  { "word": "RAINBOW", "hint": "Colourful arc after rain", "category": "Nature" },
+  { "word": "GALAXY", "hint": "A huge group of stars", "category": "Space" },
+  { "word": "DRAGON", "hint": "A legendary creature that can fly", "category": "Fantasy" },
+  { "word": "TREASURE", "hint": "Pirates love finding this", "category": "Adventure" },
+  { "word": "MYSTERY", "hint": "Something waiting to be solved", "category": "Puzzle" },
+  { "word": "VICTORY", "hint": "What you get when you win", "category": "Game Words" }
+]
