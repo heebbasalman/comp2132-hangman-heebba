@@ -207,7 +207,7 @@ function updateDisplay() {
   const displayedWord = gameState.word
     .split('')
     .map((letter) => gameState.guessedLetters.includes(letter) ? letter : '_')
-    .join(' ');
+    .join('');;
 
   elements.wordDisplay.textContent = displayedWord;
   elements.hintText.textContent = gameState.hint;
