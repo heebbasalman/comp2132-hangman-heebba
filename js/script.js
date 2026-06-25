@@ -5,6 +5,22 @@ const wrongSound = new Audio('assets/sounds/wrong.mp3');
 const winSound = new Audio('assets/sounds/win.mp3');
 const loseSound = new Audio('assets/sounds/lose.mp3');
 
+function stopAllSounds() {
+  [correctSound, wrongSound, winSound, loseSound].forEach((sound) => {
+    sound.pause();
+    sound.currentTime = 0;
+  });
+}
+
+function playSound(sound) {
+  if (!gameState.soundOn) {
+    return;
+  }
+
+  sound.currentTime = 0;
+  sound.play();
+}
+
 const gameState = {
   word: '',
   hint: '',
@@ -114,6 +130,7 @@ async function loadWords() {
 }
 
 function startNewGame() {
+  stopAllSounds();
   const randomIndex = Math.floor(Math.random() * gameState.wordBank.length);
   const selectedWord = gameState.wordBank[randomIndex];
 
@@ -162,7 +179,7 @@ function handleGuess(letter, button) {
     button.classList.add('correct');
     elements.message.textContent = `Nice! ${letter} is in the word.`;
     correctSound.currentTime = 0;
-    correctSound.play();
+    playSound(correctSound);
     animateBuddy('jump');
   } else if (gameState.shieldReady) {
     button.classList.add('wrong');
@@ -179,7 +196,7 @@ function handleGuess(letter, button) {
     setTimeout(() => document.body.classList.remove('shake'), 450);
     animateBuddy('wobble');
     wrongSound.currentTime = 0;
-    wrongSound.play();
+    playSound(wrongSound);
   }
 
   updateDisplay();
@@ -229,7 +246,7 @@ function endGame(playerWon) {
     launchConfetti();
     achievements.forEach((achievement) => achievement.check());
     winSound.currentTime = 0;
-    winSound.play();
+    playSound(winSound);
   } else {
     gameState.stats.losses += 1;
     gameState.stats.streak = 0;
@@ -237,7 +254,7 @@ function endGame(playerWon) {
     elements.buddyImage.src = 'assets/images/buddy-lost.svg';
     document.body.classList.add('shake');
     loseSound.currentTime = 0;
-    loseSound.play();
+    playSound(loseSound);
   }
 
   saveStats();
@@ -387,6 +404,11 @@ elements.hintButton.addEventListener('click', useHint);
 elements.resetStatsButton.addEventListener('click', resetStats);
 elements.soundButton.addEventListener('click', () => {
   gameState.soundOn = !gameState.soundOn;
+
+  if (!gameState.soundOn) {
+    stopAllSounds();
+  }
+
   elements.soundButton.textContent = gameState.soundOn ? '🔊 Sound On' : '🔇 Sound Off';
 });
 
