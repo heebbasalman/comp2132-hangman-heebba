@@ -342,35 +342,54 @@ function showAchievement(text) {
 function launchConfetti() {
   const canvas = elements.confettiCanvas;
   const context = canvas.getContext('2d');
+
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
+
+  const colors = [
+    '#20f3ff',
+    '#ff3ea5',
+    '#8e38ff',
+    '#ffc836',
+    '#41ff69',
+    '#ffffff'
+  ];
+
   const pieces = Array.from({ length: 90 }, () => ({
     x: Math.random() * canvas.width,
     y: Math.random() * -canvas.height,
     size: Math.random() * 8 + 4,
     speed: Math.random() * 4 + 2,
-    rotation: Math.random() * 360
+    rotation: Math.random() * 360,
+    color: colors[Math.floor(Math.random() * colors.length)]
   }));
 
   let frame = 0;
+
   function drawConfetti() {
     context.clearRect(0, 0, canvas.width, canvas.height);
+
     pieces.forEach((piece) => {
       piece.y += piece.speed;
       piece.rotation += 6;
+
       context.save();
       context.translate(piece.x, piece.y);
       context.rotate(piece.rotation * Math.PI / 180);
+      context.fillStyle = piece.color;
       context.fillRect(-piece.size / 2, -piece.size / 2, piece.size, piece.size);
       context.restore();
     });
+
     frame += 1;
+
     if (frame < 130) {
       requestAnimationFrame(drawConfetti);
     } else {
       context.clearRect(0, 0, canvas.width, canvas.height);
     }
   }
+
   drawConfetti();
 }
 
